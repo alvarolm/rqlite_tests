@@ -78,21 +78,21 @@ func bench(label, table, url string, n, conc int) time.Duration {
 	start := time.Now()
 	for w := 0; w < conc; w++ {
 		wg.Add(1)
-		go func() {
+		go func(w int) {
 			defer wg.Done()
 			for {
 				k := atomic.AddInt64(&i, 1) - 1
 				if k >= int64(n) {
 					return
 				}
-				body, _ := json.Marshal([]any{[]any{insert, fmt.Sprintf("row-%d", k)}})
+				body, _ := json.Marshal([]any{[]any{insert, fmt.Sprintf("row-%d-%d", w, k)}})
 				t0 := time.Now()
 				if err := post(url, body); err != nil {
 					log.Fatalf("%s: %v", label, err)
 				}
 				lats[k] = time.Since(t0)
 			}
-		}()
+		}(w)
 	}
 	wg.Wait()
 	d := time.Since(start)
