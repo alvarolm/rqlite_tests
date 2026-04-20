@@ -1,0 +1,44 @@
+
+            _ _ _
+           | (_) |
+  _ __ __ _| |_| |_ ___
+ | '__/ _  | | | __/ _ \   The lightweight, distributed
+ | | | (_| | | | ||  __/   relational database.
+ |_|  \__, |_|_|\__\___|
+         | |               www.rqlite.io
+         |_|
+
+[rqlited] 2026/04/19 21:00:57 rqlited starting, version 10, SQLite 3.51.2, commit unknown, compiler (toolchain) gc, compiler (command) unknown
+[rqlited] 2026/04/19 21:00:57 go1.25.6, target architecture is amd64, operating system target is linux
+[rqlited] 2026/04/19 21:00:57 launch command: rqlited -node-id 3 -http-addr localhost:4005 -raft-addr localhost:4006 -join localhost:4002 ./cluster/node3
+[rqlited] 2026/04/19 21:00:57 no preexisting node state detected in /home/alvarolm/temp/rqlite_tests/cluster/node3, node may be bootstrapping
+[cluster] 2026/04/19 21:00:57 service listening on localhost:4006
+[mux] 2026/04/19 21:00:57 mux serving on 127.0.0.1:4006, advertising localhost:4006
+[http] 2026/04/19 21:00:57 execute queue processing started with capacity 1024, batch size 128, timeout 50ms
+[http] 2026/04/19 21:00:57 service listening on 127.0.0.1:4005
+[store] 2026/04/19 21:00:57 opening store with node ID 3, listening on localhost:4006
+[store] 2026/04/19 21:00:57 ensuring data directory exists at /home/alvarolm/temp/rqlite_tests/cluster/node3
+[store] 2026/04/19 21:00:57 old v7 snapshot directory does not exist at /home/alvarolm/temp/rqlite_tests/cluster/node3/snapshots, nothing to upgrade
+[store] 2026/04/19 21:00:57 old v8 snapshot directory does not exist at /home/alvarolm/temp/rqlite_tests/cluster/node3/rsnapshots, nothing to upgrade
+[snapshot-store] 2026/04/19 21:00:57 store initialized using /home/alvarolm/temp/rqlite_tests/cluster/node3/wsnapshots
+[store] 2026/04/19 21:00:57 0 preexisting snapshots present
+[store] 2026/04/19 21:00:57 raft log is 0 bytes at open, no entries present
+[rqlited] 2026/04/19 21:00:57 checking that supplied join addresses don't serve HTTP(S)
+[rqlited] 2026/04/19 21:00:57 successfully joined cluster at localhost:4002
+[rqlited] 2026/04/19 21:00:57 node HTTP API available at http://localhost:4005
+[rqlited] 2026/04/19 21:00:57 connect using the command-line tool via 'rqlite -H localhost -p 4005'
+[rqlited] 2026/04/19 21:00:57 visit the rqlite console for this node at http://localhost:4005/console/
+[raft] 2026/04/19 21:00:57 [WARN]  failed to get previous log: previous-index=4 last-index=0 error="log not found"
+[store] 2026/04/19 21:00:57 node 1 at localhost:4002 is now Leader
+[store] 2026/04/19 21:00:57 first log applied since node 3 started, log at index 5
+[rqlited] 2026/04/19 21:00:57 received signal "terminated"
+[http] 2026/04/19 21:00:57 closing HTTP service on 127.0.0.1:4005
+[http] 2026/04/19 21:00:57 HTTP service on 127.0.0.1:4005 stopped: http: Server closed
+2026-04-19T21:00:57.516-0400 [ERROR] raft-net: failed to accept connection: error="network connection closed"
+2026-04-19T21:00:57.522-0400 [ERROR] raft-net: failed to accept connection: error="network connection closed"
+[store] 2026/04/19 21:00:57 full snapshot created in 8.78252ms on node ID 3
+[store] 2026/04/19 21:00:57 persisted full snapshot 2-16-1776646857525 in 6.056847ms
+2026-04-19T21:00:57.532-0400 [ERROR] raft-net: failed to accept connection: error="network connection closed"
+[store] 2026/04/19 21:00:57 snapshot-on-close took  19.315373ms
+[store] 2026/04/19 21:00:57 store closed with node ID 3, listening on localhost:4006
+[rqlited] 2026/04/19 21:00:57 rqlite server stopped

@@ -8,6 +8,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"sort"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -73,6 +74,7 @@ func bench(label, table, url string, n, conc int) time.Duration {
 	var wg sync.WaitGroup
 	var i int64
 	insert := "INSERT INTO " + table + "(v) VALUES(?)"
+	lats := make([]time.Duration, n)
 	start := time.Now()
 	for w := 0; w < conc; w++ {
 		wg.Add(1)
@@ -84,18 +86,26 @@ func bench(label, table, url string, n, conc int) time.Duration {
 					return
 				}
 				body, _ := json.Marshal([]any{[]any{insert, fmt.Sprintf("row-%d", k)}})
+				t0 := time.Now()
 				if err := post(url, body); err != nil {
 					log.Fatalf("%s: %v", label, err)
 				}
+				lats[k] = time.Since(t0)
 			}
 		}()
 	}
 	wg.Wait()
 	d := time.Since(start)
-	fmt.Printf("%-14s table=%-18s conc=%-4d n=%-6d total=%-12v per-op=%-12v ops/s=%.1f\n",
+	sort.Slice(lats, func(a, b int) bool { return lats[a] < lats[b] })
+	pct := func(p float64) time.Duration {
+		idx := int(float64(n-1) * p)
+		return lats[idx].Truncate(time.Microsecond)
+	}
+	fmt.Printf("%-14s table=%-18s conc=%-4d n=%-6d total=%-12v per-op=%-12v ops/s=%.1f p50=%v p95=%v p99=%v max=%v\n",
 		label, table, conc, n, d.Truncate(time.Microsecond),
 		(d / time.Duration(n)).Truncate(time.Microsecond),
-		float64(n)/d.Seconds())
+		float64(n)/d.Seconds(), pct(0.50), pct(0.95), pct(0.99),
+		lats[n-1].Truncate(time.Microsecond))
 	return d
 }
 
@@ -105,13 +115,17 @@ func main() {
 	mode := flag.String("mode", "all", "which mode(s) to run: normal | queued | queued_wait | all")
 	flag.Parse()
 
+	now := time.Now()
+
 	allRuns := []struct {
 		key, label, table, url string
 		postSleep              time.Duration
 	}{
 		{"normal", "normal", "bench_normal", base + "/db/execute", 0},
-		{"queued", "queued", "bench_queued", base + "/db/execute?queue", 2 * time.Second},
-		{"queued_wait", "queued+wait", "bench_queued_wait", base + "/db/execute?queue&wait&timeout=30s", 0},
+		/*
+			{"queued", "queued", "bench_queued", base + "/db/execute?queue", 2 * time.Second},
+			{"queued_wait", "queued+wait", "bench_queued_wait", base + "/db/execute?queue&wait&timeout=30s", 0},
+		*/
 	}
 	for _, r := range allRuns {
 		if *mode != "all" && *mode != r.key {
@@ -124,4 +138,6 @@ func main() {
 		}
 		fmt.Printf("  committed rows in %s: %d\n\n", r.table, count(r.table))
 	}
+
+	fmt.Println("REQUESTS TOOK, %s", time.Since(now))
 }
