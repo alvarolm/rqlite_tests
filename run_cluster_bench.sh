@@ -9,9 +9,9 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
-N="${N:-500}"
-C="${C:-10}"
-LATENCY="${LATENCY:-0}"
+N="${N:-350}"
+C="${C:-35}"
+LATENCY="${LATENCY:-6ms}"
 DATA_ROOT="${DATA_ROOT:-./cluster}"
 LOG_DIR="${LOG_DIR:-./cluster-logs}"
 

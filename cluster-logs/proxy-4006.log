@@ -1,0 +1,2 @@
+2026/04/22 11:59:41 latproxy :4006 -> localhost:14006 delay=6ms
+2026/04/22 11:59:41 dial localhost:14006: dial tcp [::1]:14006: connect: connection refused
