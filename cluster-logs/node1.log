@@ -8,43 +8,43 @@
          | |               www.rqlite.io
          |_|
 
-[rqlited] 2026/04/22 11:59:41 rqlited starting, version 10, SQLite 3.51.2, commit unknown, compiler (toolchain) gc, compiler (command) unknown
-[rqlited] 2026/04/22 11:59:41 go1.25.6, target architecture is amd64, operating system target is linux
-[rqlited] 2026/04/22 11:59:41 launch command: rqlited -node-id 1 -http-addr localhost:4001 -raft-addr localhost:14002 -raft-adv-addr localhost:4002 ./cluster/node1
-[mux] 2026/04/22 11:59:41 mux serving on 127.0.0.1:14002, advertising localhost:4002
-[rqlited] 2026/04/22 11:59:41 no preexisting node state detected in /home/alvarolm/temp/rqlite_tests/cluster/node1, node may be bootstrapping
-[cluster] 2026/04/22 11:59:41 service listening on localhost:4002
-[http] 2026/04/22 11:59:41 execute queue processing started with capacity 1024, batch size 128, timeout 50ms
-[http] 2026/04/22 11:59:41 service listening on 127.0.0.1:4001
-[store] 2026/04/22 11:59:41 opening store with node ID 1, listening on localhost:4002
-[store] 2026/04/22 11:59:41 ensuring data directory exists at /home/alvarolm/temp/rqlite_tests/cluster/node1
-[store] 2026/04/22 11:59:41 old v7 snapshot directory does not exist at /home/alvarolm/temp/rqlite_tests/cluster/node1/snapshots, nothing to upgrade
-[store] 2026/04/22 11:59:41 old v8 snapshot directory does not exist at /home/alvarolm/temp/rqlite_tests/cluster/node1/rsnapshots, nothing to upgrade
-[snapshot-store] 2026/04/22 11:59:41 store initialized using /home/alvarolm/temp/rqlite_tests/cluster/node1/wsnapshots
-[store] 2026/04/22 11:59:41 0 preexisting snapshots present
-[store] 2026/04/22 11:59:41 raft log is 0 bytes at open, no entries present
-[rqlited] 2026/04/22 11:59:42 bootstrapping single new node
-[rqlited] 2026/04/22 11:59:42 node HTTP API available at http://localhost:4001
-[rqlited] 2026/04/22 11:59:42 connect using the command-line tool via 'rqlite -H localhost -p 4001'
-[rqlited] 2026/04/22 11:59:42 visit the rqlite console for this node at http://localhost:4001/console/
-[raft] 2026/04/22 11:59:43 [WARN]  heartbeat timeout reached, starting election: last-leader-addr= last-leader-id=
-[store] 2026/04/22 11:59:43 this node (ID=1, addr=localhost:4002) is now Leader
-[store] 2026/04/22 11:59:43 node with ID 2, at localhost:4004, joined successfully as voter
-[raft] 2026/04/22 11:59:43 [WARN]  appendEntries rejected, sending older logs: peer="{Voter 2 localhost:4004}" next=1
-[raft] 2026/04/22 11:59:43 [WARN]  appendEntries rejected, sending older logs: peer="{Voter 3 localhost:4006}" next=1
-[store] 2026/04/22 11:59:43 node with ID 3, at localhost:4006, joined successfully as voter
-[store] 2026/04/22 11:59:44 first log applied since node 1 started, log at index 5
-[rqlited] 2026/04/22 11:59:45 received signal "terminated"
-[http] 2026/04/22 11:59:45 closing HTTP service on 127.0.0.1:4001
-[http] 2026/04/22 11:59:45 HTTP service on 127.0.0.1:4001 stopped: http: Server closed
-[rqlited] 2026/04/22 11:59:45 stepping down as Leader before shutdown
-[store] 2026/04/22 11:59:45 stepping down from leadership, transferring to any available node
-2026-04-22T11:59:45.003-0400 [ERROR] raft-net: failed to accept connection: error="network connection closed"
-[raft] 2026/04/22 11:59:45 [ERROR] failed to heartbeat to: peer=localhost:4004 backoff time=10ms error="dial tcp [::1]:4004: connect: connection refused"
-2026-04-22T11:59:45.008-0400 [ERROR] raft-net: failed to accept connection: error="network connection closed"
-[store] 2026/04/22 11:59:45 full snapshot created in 13.00859ms on node ID 1
-2026-04-22T11:59:45.018-0400 [ERROR] raft-net: failed to accept connection: error="network connection closed"
-[store] 2026/04/22 11:59:45 persisted full snapshot 2-357-1776873585016 in 7.536696ms
-[store] 2026/04/22 11:59:45 snapshot-on-close took  24.346849ms
-[store] 2026/04/22 11:59:45 store closed with node ID 1, listening on localhost:4002
-[rqlited] 2026/04/22 11:59:45 rqlite server stopped
+[rqlited] 2026/04/22 19:12:51 rqlited starting, version 10, SQLite 3.51.2, commit unknown, compiler (toolchain) gc, compiler (command) unknown
+[rqlited] 2026/04/22 19:12:51 go1.25.6, target architecture is amd64, operating system target is linux
+[rqlited] 2026/04/22 19:12:51 launch command: rqlited -node-id 1 -http-addr localhost:4001 -raft-addr localhost:4002 ./cluster/node1
+[mux] 2026/04/22 19:12:51 mux serving on 127.0.0.1:4002, advertising localhost:4002
+[rqlited] 2026/04/22 19:12:51 no preexisting node state detected in /home/alvarolm/temp/rqlite_tests/cluster/node1, node may be bootstrapping
+[cluster] 2026/04/22 19:12:51 service listening on localhost:4002
+[http] 2026/04/22 19:12:51 execute queue processing started with capacity 1024, batch size 128, timeout 50ms
+[http] 2026/04/22 19:12:51 service listening on 127.0.0.1:4001
+[store] 2026/04/22 19:12:51 opening store with node ID 1, listening on localhost:4002
+[store] 2026/04/22 19:12:51 ensuring data directory exists at /home/alvarolm/temp/rqlite_tests/cluster/node1
+[store] 2026/04/22 19:12:51 old v7 snapshot directory does not exist at /home/alvarolm/temp/rqlite_tests/cluster/node1/snapshots, nothing to upgrade
+[store] 2026/04/22 19:12:51 old v8 snapshot directory does not exist at /home/alvarolm/temp/rqlite_tests/cluster/node1/rsnapshots, nothing to upgrade
+[snapshot-store] 2026/04/22 19:12:51 store initialized using /home/alvarolm/temp/rqlite_tests/cluster/node1/wsnapshots
+[store] 2026/04/22 19:12:51 0 preexisting snapshots present
+[store] 2026/04/22 19:12:51 raft log is 0 bytes at open, no entries present
+[rqlited] 2026/04/22 19:12:51 bootstrapping single new node
+[rqlited] 2026/04/22 19:12:51 node HTTP API available at http://localhost:4001
+[rqlited] 2026/04/22 19:12:51 connect using the command-line tool via 'rqlite -H localhost -p 4001'
+[rqlited] 2026/04/22 19:12:51 visit the rqlite console for this node at http://localhost:4001/console/
+[raft] 2026/04/22 19:12:53 [WARN]  heartbeat timeout reached, starting election: last-leader-addr= last-leader-id=
+[store] 2026/04/22 19:12:53 this node (ID=1, addr=localhost:4002) is now Leader
+[store] 2026/04/22 19:12:53 node with ID 2, at localhost:4004, joined successfully as voter
+[raft] 2026/04/22 19:12:53 [WARN]  appendEntries rejected, sending older logs: peer="{Voter 2 localhost:4004}" next=1
+[raft] 2026/04/22 19:12:53 [WARN]  appendEntries rejected, sending older logs: peer="{Voter 3 localhost:4006}" next=1
+[store] 2026/04/22 19:12:53 node with ID 3, at localhost:4006, joined successfully as voter
+[store] 2026/04/22 19:12:53 first log applied since node 1 started, log at index 5
+[rqlited] 2026/04/22 19:12:54 received signal "terminated"
+[http] 2026/04/22 19:12:54 closing HTTP service on 127.0.0.1:4001
+[http] 2026/04/22 19:12:54 HTTP service on 127.0.0.1:4001 stopped: http: Server closed
+[rqlited] 2026/04/22 19:12:54 stepping down as Leader before shutdown
+[store] 2026/04/22 19:12:54 stepping down from leadership, transferring to any available node
+[store] 2026/04/22 19:12:54 Leader is now unknown
+2026-04-22T19:12:54.232-0400 [ERROR] raft-net: failed to accept connection: error="network connection closed"
+2026-04-22T19:12:54.238-0400 [ERROR] raft-net: failed to accept connection: error="network connection closed"
+2026-04-22T19:12:54.248-0400 [ERROR] raft-net: failed to accept connection: error="network connection closed"
+[store] 2026/04/22 19:12:54 full snapshot created in 20.861101ms on node ID 1
+[store] 2026/04/22 19:12:54 persisted full snapshot 2-357-1776899574253 in 4.422967ms
+[store] 2026/04/22 19:12:54 snapshot-on-close took  27.760505ms
+[store] 2026/04/22 19:12:54 store closed with node ID 1, listening on localhost:4002
+[rqlited] 2026/04/22 19:12:54 rqlite server stopped

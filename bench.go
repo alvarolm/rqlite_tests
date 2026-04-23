@@ -14,7 +14,7 @@ import (
 	"time"
 )
 
-const base = "http://localhost:4001"
+const base = "http://localhost:4005"
 
 var client = &http.Client{
 	Transport: &http.Transport{
@@ -87,7 +87,7 @@ func bench(label, table, url string, n, conc int) time.Duration {
 				if k >= int64(n) {
 					return
 				}
-				body, _ := json.Marshal([]any{[]any{insert, kvalue, kvalue}})
+				body, _ := json.Marshal([]any{[]any{insert, kvalue, ""}})
 				t0 := time.Now()
 				if err := post(url, body); err != nil {
 					log.Fatalf("%s: %v", label, err)
